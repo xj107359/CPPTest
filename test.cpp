@@ -142,18 +142,37 @@ void cout_precision()
     cout << 3.1415926 << endl;
     cout << 3 << endl;
 
-    std::streamsize ss = std::cout.precision();
+    std::ios_base::fmtflags orig = cout.setf(std::ios_base::fixed);
+    std::streamsize prec = std::cout.precision(2);
     cout.setf(std::ios_base::fixed);
     cout.setf(std::ios_base::showpoint);
-    cout.precision(2);
+    //cout.precision(2);
     cout << 3.1415926 << endl;
     cout << 3 << endl;
 
-    cout.unsetf(std::ios_base::fixed);
-    cout.unsetf(std::ios_base::showpoint);
-    std::cout.precision(ss);
+    //cout.unsetf(std::ios_base::fixed);
+    //cout.unsetf(std::ios_base::showpoint);
+    std::cout.precision(prec);
+    cout.setf(orig);
     cout << 3.1415926 << endl;
     cout << 3 << endl;
+}
+
+void init_new_var()
+{
+    int* pi = new int(6);
+    delete pi;
+    double* pd = new double(99.99);
+    delete pd;
+    struct where { double x; double y; double z; };
+    where* one = new where{ 2.5, 5.3, 7.2 };
+    delete one;
+    int* ar = new int[4] {2, 4, 6, 7};
+    delete[] ar;
+    int* pin = new int{ 6 };
+    delete pin;
+    double* pdo = new double{ 99.99 };
+    delete pdo;
 }
 
 int main()
@@ -168,4 +187,5 @@ int main()
     for_range();
     cctype_usage();
     cout_precision();
+    init_new_var();
 }
