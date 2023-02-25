@@ -175,6 +175,67 @@ void init_new_var()
     delete pdo;
 }
 
+class Stock
+{
+private:
+    long m_shares;
+
+public:
+    Stock(long shares) { m_shares = shares; }
+    void print() const { cout << m_shares << endl; }
+};
+
+void init_class()
+{
+    cout << endl << "=== init_class ===" << endl;
+    Stock stock1(9);
+    stock1.print();
+    Stock stock2{ 10 };
+    stock2.print();
+}
+
+void init_class_array()
+{
+    cout << endl << "=== init_class_array ===" << endl;
+    Stock stocks[4] = {
+        Stock(2),
+        Stock(3),
+        Stock{4},
+        Stock{5},
+    };
+
+    for (int i = 0; i < 4; i++)
+    {
+        stocks[i].print();
+    }
+}
+
+class Bakery
+{
+public:
+    Bakery() {}
+private:
+    enum {Months = 12};
+    double costs[Months];
+
+    static const int Days = 365;
+    double costs2[Days];
+};
+
+void class_static_var()
+{
+    Bakery bakery;
+}
+
+void enum_class()
+{
+    enum class egg { Small, Medium, Large, Jumbo };
+    enum class t_shirt { Small, Medium, Large, Xlarge };
+
+    egg choice = egg::Large;
+    t_shirt Floyd = t_shirt::Large;
+}
+
 int main()
 {
     std::cout << "Hello World!\n";
@@ -188,4 +249,8 @@ int main()
     cctype_usage();
     cout_precision();
     init_new_var();
+    init_class();
+    init_class_array();
+    class_static_var();
+    enum_class();
 }
