@@ -236,6 +236,68 @@ void enum_class()
     t_shirt Floyd = t_shirt::Large;
 }
 
+//=== class_default_val ===
+//10, default
+//20, default
+//10, Hello
+void class_default_val()
+{
+    class default_val
+    {
+    public:
+        default_val() {};
+        default_val(int count):m_count(count){};
+        default_val(string text) :m_text(text) {};
+        void print() {
+            cout << m_count << ", " << m_text << endl;
+        }
+    private:
+        int m_count{ 10 };
+        string m_text{ "default" };
+    };
+
+    cout << endl << "=== class_default_val ===" << endl;
+    default_val val1;
+    default_val val2(20);
+    default_val val3("Hello");
+    val1.print();
+    val2.print();
+    val3.print();
+}
+
+//== = class_enum_const_var == =
+//pv: Test, voice : 3
+//pv : Test, voice : 4
+//pv : Test, voice : 5
+//pv : Test, voice : 6
+//pv : Test, voice : 0
+//pv : Test, voice : 1
+//pv : Test, voice : 2
+class Singer {
+public:
+    enum {
+        other, alto, contralto, soprano,
+        bass, baritone, tenor
+    };
+    enum { Vtype = 7 };
+private:
+    char pv[Vtype] {"Test"};
+    int voice{ 0 };
+public:
+    Singer() {}
+    Singer(int v = other):voice(v) {}
+    Singer& Set()
+    { voice += 1; voice %= Vtype; return *this; }
+    void Show() const { cout << "pv: " << pv << ", voice: " << voice << endl; }
+};
+void class_enum_const_var()
+{
+    cout << endl << "=== class_enum_const_var ===" << endl;
+    Singer singer(Singer::contralto);
+    for(int i=0; i< Singer::Vtype; i++)
+        singer.Set().Show();
+}
+
 int main()
 {
     std::cout << "Hello World!\n";
@@ -253,4 +315,6 @@ int main()
     init_class_array();
     class_static_var();
     enum_class();
+    class_default_val();
+    class_enum_const_var();
 }
