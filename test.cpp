@@ -298,6 +298,65 @@ void class_enum_const_var()
         singer.Set().Show();
 }
 
+template<typename T>
+using arrtype = std::array< T, 12 >;
+
+void template_using()
+{
+    typedef std::array<double, 12> arrd;
+    typedef std::array<int, 12> arri;
+    typedef std::array<std::string, 12> arrstd;
+    arrd gallons;
+    arri days;
+    arrstd months;
+
+    arrtype<double> gallons2;
+    arrtype<int> days2;
+    arrtype<std::string> months2;
+}
+
+//== = init_string == =
+//one: Lottery Winner!
+//two : $$$$$$$$$$$$$$$$$$$$
+//three : Lottery Winner!
+//one : Lottery Winner!Oops!
+//four : Sorry!That was Pottery Winner!
+//five : All's well that ends
+//six : well
+//seven : well
+//eight : That was Pottery
+void init_string2()
+{
+    cout << endl << "=== init_string ===" << endl;
+    string one("Lottery Winner!");
+    cout << "one: " << one << endl;
+    string two(20, '$');
+    cout << "two: " << two << endl;
+    string three(one);
+    cout << "three: " << three << endl;
+
+    one += " Oops!";
+    cout << "one: " << one << endl;
+
+    two = "Sorry! That was ";
+    three[0] = 'P';
+    string four = two + three;
+    cout << "four: " << four << endl;
+
+    char alls[] = "All's well that ends well";
+    string five(alls, 20);
+    cout << "five: " << five << endl;
+
+    string six(alls+6, alls+10);
+    cout << "six: " << six << endl;
+
+    string seven(&five[6], &five[10]);
+    cout << "seven: " << seven << endl;
+
+    string eight(four, 7, 16);
+    cout << "eight: " << eight << endl;
+}
+
 int main()
 {
     std::cout << "Hello World!\n";
@@ -317,4 +376,6 @@ int main()
     enum_class();
     class_default_val();
     class_enum_const_var();
+    template_using();
+    init_string2();
 }

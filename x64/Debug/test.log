@@ -1,2 +1,6 @@
 ﻿  test.cpp
+D:\workspace\VS2022\test\test\test.cpp(313,21): warning C4101: “gallons2”: 未引用的局部变量
+D:\workspace\VS2022\test\test\test.cpp(314,18): warning C4101: “days2”: 未引用的局部变量
+D:\workspace\VS2022\test\test\test.cpp(309,10): warning C4101: “gallons”: 未引用的局部变量
+D:\workspace\VS2022\test\test\test.cpp(310,10): warning C4101: “days”: 未引用的局部变量
   test.vcxproj -> D:\workspace\VS2022\test\test\x64\Debug\test.exe
